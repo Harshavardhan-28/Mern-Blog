@@ -1,10 +1,11 @@
 import React from 'react'
 import { Button, Navbar, TextInput } from 'flowbite-react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { FaMoon } from "react-icons/fa";
 
 export default function Header() {
+    const path = useLocation().pathname;
   return (
     <Navbar className='border-b-2'>
         <Link to='/' className='self-center whitespace-nowrap text-sm
@@ -30,24 +31,24 @@ export default function Header() {
                 <FaMoon />
             </Button>
             <Link to='/sign-in'>
-                <Button gradientDuoTone='purpleToBlue'>
+                <Button gradientDuoTone='purpleToBlue' outline>
                     Sign In
                 </Button>
             </Link>
-            <Navbar.Toggle />
+            <Navbar.Toggle/>
         </div>
         <Navbar.Collapse>
-            <Navbar.Link>
+            <Navbar.Link active = {path==='/'} as={'div'}>
                 <Link to='/'>
                     Home
                 </Link>
             </Navbar.Link>
-            <Navbar.Link>
+            <Navbar.Link active = {path==='/'} as={'div'}>
                 <Link to='/about'>
                         About
                     </Link>
                 </Navbar.Link>
-                <Navbar.Link>
+                <Navbar.Link active = {path==='/'} as={'div'}>
                     <Link to='/Projects'>
                     Projects
                     </Link>
